@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patrick Michael Beggs</title>
+<meta name="description" content="Patrick Michael Beggs, M.Sc. student in Industrial Engineering and Management at KIT and working student in audit at RSM Ebner Stolz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F1F4F4;
+  --surface:#FFFFFF;
+  --ink:#16232A;
+  --ink-soft:#566A72;
+  --line:#D8E0E0;
+  --accent:#10606B;
+  --accent-tint:#DDEBEB;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1518;
+    --surface:#141D21;
+    --ink:#E7EDEC;
+    --ink-soft:#93A5A8;
+    --line:#25333A;
+    --accent:#5CC3CE;
+    --accent-tint:#16292E;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1518;
+  --surface:#141D21;
+  --ink:#E7EDEC;
+  --ink-soft:#93A5A8;
+  --line:#25333A;
+  --accent:#5CC3CE;
+  --accent-tint:#16292E;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--accent);color:var(--paper)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:1060px;margin:0 auto;padding:0 28px}
+
+/* ---------- Masthead ---------- */
+.masthead{
+  position:sticky;top:0;z-index:40;
+  background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.masthead nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:58px}
+.mark{
+  font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;
+  color:var(--ink);text-decoration:none;text-transform:uppercase;
+}
+.mark span{color:var(--accent)}
+.navlinks{display:flex;gap:24px}
+.navlinks a{
+  font-family:var(--mono);font-size:.76rem;letter-spacing:.04em;
+  color:var(--ink-soft);text-decoration:none;padding:4px 0;
+  border-bottom:1px solid transparent;transition:color .18s, border-color .18s;
+}
+.navlinks a:hover,.navlinks a:focus-visible{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* ---------- Opening ---------- */
+.opening{padding:76px 0 64px}
+.route{
+  font-family:var(--mono);font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:22px;
+}
+.route i{display:inline-block;width:26px;height:1px;background:var(--accent);opacity:.55;font-style:normal}
+h1{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(2.7rem,6.4vw,4.5rem);
+  line-height:1.03;letter-spacing:-.02em;text-wrap:balance;
+}
+h1 em{font-style:normal;color:var(--accent)}
+.role-line{
+  font-family:var(--serif);font-weight:400;font-style:italic;
+  font-size:clamp(1.3rem,3vw,1.85rem);color:var(--ink-soft);
+  margin-top:10px;letter-spacing:-.01em;
+}
+.lead{max-width:62ch;margin-top:26px;color:var(--ink-soft);font-size:1.05rem}
+.lead strong{color:var(--ink);font-weight:500}
+
+.facts{
+  margin-top:38px;display:grid;gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:3px;overflow:hidden;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+}
+.fact{background:var(--surface);padding:16px 18px}
+.fact dt{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);margin-bottom:5px;
+}
+.fact dd{font-size:.95rem;font-weight:500}
+.fact dd small{display:block;font-weight:400;color:var(--ink-soft);font-size:.82rem}
+
+.actions{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  font-family:var(--mono);font-size:.8rem;letter-spacing:.05em;
+  padding:11px 20px;border-radius:3px;text-decoration:none;transition:.18s;
+}
+.btn-fill{background:var(--accent);color:var(--paper);border:1px solid var(--accent)}
+.btn-fill:hover{filter:brightness(1.12)}
+.btn-line{color:var(--ink);border:1px solid var(--line)}
+.btn-line:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---------- Sections ---------- */
+.block{
+  border-top:1px solid var(--line);
+  padding-block:58px;
+  padding-inline:max(28px, calc((100% - 1004px) / 2));
+  display:grid;grid-template-columns:210px 1fr;gap:52px;align-items:start;
+}
+.block > .block-head{position:sticky;top:82px}
+.block-head h2{
+  font-family:var(--serif);font-weight:600;font-size:1.35rem;letter-spacing:-.01em;
+}
+.block-head p{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);margin-top:8px;
+}
+
+/* ---------- Record entries ---------- */
+.record{border-left:1px solid var(--line);padding-left:28px;position:relative;padding-bottom:34px}
+.record:last-child{padding-bottom:0}
+.record::before{
+  content:"";position:absolute;left:-4px;top:9px;width:7px;height:7px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--accent);
+}
+.record .stamp{
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.03em;color:var(--accent);
+  display:flex;flex-wrap:wrap;gap:4px 12px;
+}
+.record .stamp span{color:var(--ink-soft)}
+.record h3{font-family:var(--serif);font-weight:600;font-size:1.16rem;margin-top:7px;letter-spacing:-.01em}
+.record .role{color:var(--ink-soft);font-size:.95rem;margin-top:1px}
+.record ul{margin-top:11px;padding-left:17px;color:var(--ink-soft);font-size:.94rem}
+.record ul li{margin-top:5px}
+.record ul li::marker{color:var(--accent)}
+.grade{
+  display:inline-block;margin-left:8px;font-family:var(--mono);font-size:.7rem;
+  background:var(--accent-tint);color:var(--accent);border:1px solid var(--accent);
+  padding:1px 7px;border-radius:2px;vertical-align:2px;white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.scale-note{
+  margin-top:26px;font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);
+  padding-left:28px;
+}
+
+/* ---------- Skills ---------- */
+.spec{display:flex;flex-direction:column}
+.spec-row{
+  display:grid;grid-template-columns:150px 1fr;gap:22px;
+  padding:16px 0;border-bottom:1px solid var(--line);
+}
+.spec-row:first-child{padding-top:0}
+.spec-row:last-child{border-bottom:none;padding-bottom:0}
+.spec-row dt{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);padding-top:4px;
+}
+.spec-row dd{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  border:1px solid var(--line);background:var(--surface);border-radius:3px;
+  padding:5px 11px;font-size:.9rem;display:inline-flex;align-items:baseline;gap:8px;
+}
+.chip b{font-weight:500}
+.chip i{font-style:normal;font-family:var(--mono);font-size:.7rem;color:var(--ink-soft)}
+.chip.mark-strong{border-color:var(--accent);background:var(--accent-tint)}
+.chip.mark-strong i{color:var(--accent)}
+
+/* ---------- Beyond ---------- */
+.beyond{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+.note{padding:14px 0;border-bottom:1px solid var(--line)}
+.note:first-child{padding-top:0}
+.note:last-child{border-bottom:none}
+.note .yr{font-family:var(--mono);font-size:.73rem;color:var(--accent);letter-spacing:.04em}
+.note h4{font-family:var(--serif);font-weight:600;font-size:1rem;margin-top:3px}
+.note p{font-size:.9rem;color:var(--ink-soft);margin-top:2px}
+.col-title{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);margin-bottom:14px;
+}
+
+/* ---------- Contact ---------- */
+.contact{border-top:1px solid var(--line);padding:62px 0 76px}
+.contact .big{
+  font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,4vw,2.5rem);
+  letter-spacing:-.02em;max-width:20ch;text-wrap:balance;
+}
+.contact .mail{
+  display:inline-block;margin-top:22px;font-family:var(--mono);font-size:1rem;
+  color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px;
+}
+.contact .mail:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.fineprint{
+  margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);
+  display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:860px){
+  .block{grid-template-columns:1fr;gap:26px;padding-block:44px}
+  .block > .block-head{position:static}
+  .beyond{grid-template-columns:1fr;gap:34px}
+  .navlinks{display:none}
+  .opening{padding:56px 0 48px}
+  .spec-row{grid-template-columns:1fr;gap:10px}
+  .spec-row dt{padding-top:0}
+}
+
+/* ---------- Print ---------- */
+@media print{
+  .masthead,.actions{display:none}
+  body{background:#fff;color:#000;font-size:11pt}
+  .block{grid-template-columns:150px 1fr;gap:24px;padding:22px 0;break-inside:avoid}
+  .record{break-inside:avoid}
+  .wrap{max-width:none;padding:0}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <nav>
+      <a class="mark" href="#top">PMB<span>.</span></a>
+      <div class="navlinks">
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#beyond">Beyond work</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ OPENING ============ -->
+  <div class="opening">
+    <div class="wrap">
+      <p class="route">Windhoek <i></i> Karlsruhe <i></i> Vaasa</p>
+      <h1>Patrick Michael Beggs<em>.</em></h1>
+      <p class="role-line">Industrial Engineering and Management</p>
+      <p class="lead">
+        Master's student at the Karlsruhe Institute of Technology with a focus on
+        audit, currently working alongside my studies at <strong>RSM Ebner Stolz</strong>.
+        Six Sigma Green Belt, programming experience in Python. Born and raised in
+        Namibia, in Germany since 2020 for my studies.
+      </p>
+
+      <dl class="facts">
+        <div class="fact">
+          <dt>Based in</dt>
+          <dd>Karlsruhe, Germany<small>Grew up in Windhoek, Namibia</small></dd>
+        </div>
+        <div class="fact">
+          <dt>Studying</dt>
+          <dd>M.Sc. at KIT<small>Current average 1.3</small></dd>
+        </div>
+        <div class="fact">
+          <dt>Currently</dt>
+          <dd>Working student in audit<small>RSM Ebner Stolz, Karlsruhe</small></dd>
+        </div>
+      </dl>
+
+      <div class="actions">
+        <a class="btn btn-fill" href="#contact">Get in touch</a>
+        <a class="btn btn-line" href="#experience">See my track record</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section class="block" id="experience">
+    <div class="block-head">
+      <h2>Experience</h2>
+      <p>Audit, research, industry</p>
+    </div>
+    <div>
+
+      <article class="record">
+        <p class="stamp">01/2026 to present <span>Karlsruhe</span></p>
+        <h3>RSM Ebner Stolz</h3>
+        <p class="role">Working student in audit, around 20 hours per week</p>
+        <ul>
+          <li>Contributing to annual and consolidated financial statement audits across a range of clients</li>
+          <li>Handling individual audit areas independently within ongoing engagements</li>
+        </ul>
+      </article>
+
+      <article class="record">
+        <p class="stamp">11/2024 to 04/2025 <span>Karlsruhe</span></p>
+        <h3>RSM Ebner Stolz</h3>
+        <p class="role">Six month internship in audit</p>
+        <ul>
+          <li>Close involvement in annual and consolidated financial statement audits</li>
+        </ul>
+      </article>
+
+      <article class="record">
+        <p class="stamp">07/2023 to 08/2025 <span>Karlsruhe</span></p>
+        <h3>Karlsruhe Institute of Technology</h3>
+        <p class="role">Student assistant, Karlsruhe House of Young Scientists</p>
+        <ul>
+          <li>Programmed export routines and document templates in Kotlin</li>
+          <li>Supported the central contact point for doctoral researchers</li>
+          <li>Managed data records and prepared events</li>
+        </ul>
+      </article>
+
+      <article class="record">
+        <p class="stamp">10/2022 to 03/2023 <span>Zuffenhausen</span></p>
+        <h3>Dr. Ing. h.c. F. Porsche AG</h3>
+        <p class="role">Five month internship, sports car assembly</p>
+        <ul>
+          <li>Supported qualification programmes on the assembly line</li>
+          <li>Developed process standards for final assembly</li>
+          <li>Ran training sessions and produced the accompanying material</li>
+        </ul>
+      </article>
+
+      <article class="record">
+        <p class="stamp">10/2016 <span>Windhoek, Namibia</span></p>
+        <h3>Aqua Services and Engineering</h3>
+        <p class="role">Mandatory internship</p>
+        <ul>
+          <li>Assessed the potential of an automated credit note procedure</li>
+          <li>Wrote the requirements specification and set up the rollout project</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section class="block" id="education">
+    <div class="block-head">
+      <h2>Education</h2>
+      <p>Namibia and Germany</p>
+    </div>
+    <div>
+
+      <article class="record">
+        <p class="stamp">since 04/2025 <span>Karlsruhe</span></p>
+        <h3>Karlsruhe Institute of Technology</h3>
+        <p class="role">M.Sc. Industrial Engineering and Management <span class="grade">Average 1.3</span></p>
+      </article>
+
+      <article class="record">
+        <p class="stamp">08/2025 to 12/2025 <span>Vaasa, Finland</span></p>
+        <h3>University of Vaasa</h3>
+        <p class="role">Exchange semester within the Erasmus+ programme</p>
+      </article>
+
+      <article class="record">
+        <p class="stamp">10/2020 to 09/2024 <span>Karlsruhe</span></p>
+        <h3>Karlsruhe Institute of Technology</h3>
+        <p class="role">B.Sc. Industrial Engineering and Management <span class="grade">Grade 2.0</span></p>
+        <ul><li>Bachelor's thesis graded 1.0</li></ul>
+      </article>
+
+      <article class="record">
+        <p class="stamp">01/2007 to 11/2019 <span>Windhoek, Namibia</span></p>
+        <h3>Deutsche Höhere Privatschule</h3>
+        <p class="role">German International Abitur <span class="grade">Grade 1.0</span></p>
+        <ul><li>Examination subjects: Mathematics, Physics, German, English, Social Studies</li></ul>
+      </article>
+
+      <p class="scale-note">German grading scale, 1.0 is the best possible result</p>
+
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="block" id="skills">
+    <div class="block-head">
+      <h2>Languages and tools</h2>
+      <p>What I work with</p>
+    </div>
+    <dl class="spec">
+
+      <div class="spec-row">
+        <dt>Languages</dt>
+        <dd>
+          <span class="chip"><b>German</b><i>native</i></span>
+          <span class="chip"><b>English</b><i>fluent, spoken and written</i></span>
+          <span class="chip"><b>Afrikaans</b><i>B2</i></span>
+        </dd>
+      </div>
+
+      <div class="spec-row">
+        <dt>Programming</dt>
+        <dd>
+          <span class="chip"><b>Python</b><i>solid</i></span>
+          <span class="chip"><b>Kotlin</b><i>solid</i></span>
+          <span class="chip"><b>Java</b><i>solid</i></span>
+        </dd>
+      </div>
+
+      <div class="spec-row">
+        <dt>Software</dt>
+        <dd>
+          <span class="chip"><b>MS Excel</b><i>advanced</i></span>
+          <span class="chip"><b>MS Word</b><i>confident</i></span>
+          <span class="chip"><b>MS PowerPoint</b><i>confident</i></span>
+        </dd>
+      </div>
+
+      <div class="spec-row">
+        <dt>Certification</dt>
+        <dd>
+          <span class="chip mark-strong"><b>Six Sigma Green Belt</b><i>certified</i></span>
+        </dd>
+      </div>
+
+    </dl>
+  </section>
+
+  <!-- ============ BEYOND ============ -->
+  <section class="block" id="beyond">
+    <div class="block-head">
+      <h2>Beyond work</h2>
+      <p>Awards and commitments</p>
+    </div>
+    <div class="beyond">
+
+      <div>
+        <p class="col-title">Awards</p>
+        <div class="note">
+          <span class="yr">2019</span>
+          <h4>Luisen-Apotheke Prize</h4>
+          <p>Best results in the natural sciences, German International Abitur 2019</p>
+        </div>
+        <div class="note">
+          <span class="yr">2019</span>
+          <h4>Pupkewitz Toyota Prize</h4>
+          <p>Best results in mathematics, German International Abitur 2019</p>
+        </div>
+        <div class="note">
+          <span class="yr">2014 and 2018</span>
+          <h4>Award for outstanding social commitment</h4>
+          <p>Received twice at the Deutsche Höhere Privatschule</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="col-title">Commitments and interests</p>
+        <div class="note">
+          <span class="yr">since 2022</span>
+          <h4>Engineers Without Borders, KIT</h4>
+          <p>Member of the student chapter, Gambia project group, currently inactive</p>
+        </div>
+        <div class="note">
+          <span class="yr">2018</span>
+          <h4>Table tennis coach</h4>
+          <p>Led the beginners course at the Deutsche Höhere Privatschule for one year</p>
+        </div>
+        <div class="note">
+          <span class="yr">off the clock</span>
+          <h4>Interests</h4>
+          <p>Table tennis, volleyball, football, fishing, camping in Namibia, travelling</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <footer class="contact" id="contact">
+    <div class="wrap">
+      <p class="route">Contact</p>
+      <p class="big">Happy to talk. Drop me a line.</p>
+      <a class="mail" href="mailto:patrickbeggs1@gmail.com">patrickbeggs1@gmail.com</a>
+      <div class="fineprint">
+        <span>Patrick Michael Beggs, Karlsruhe</span>
+        <span>Updated September 2026</span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>
